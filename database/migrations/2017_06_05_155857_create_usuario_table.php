@@ -13,8 +13,11 @@ class CreateUsuarioTable extends Migration
      */
     public function up()
     {
-        Schema::create('usuario', function (Blueprint $table) {
-            $table->increments('id');
+            Schema::create('usuario', function (Blueprint $table) {
+            $table->engine = 'InnoDB';            
+            $table->string('cpf')->unique();
+            $table->string('nome');
+            $table->string('password');
             $table->timestamps();
         });
     }

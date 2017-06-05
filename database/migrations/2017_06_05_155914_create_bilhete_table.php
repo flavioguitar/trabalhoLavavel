@@ -13,10 +13,21 @@ class CreateBilheteTable extends Migration
      */
     public function up()
     {
-        Schema::create('bilhete', function (Blueprint $table) {
-            $table->increments('id');
+            Schema::create('bilhete', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
+            
+            $table->increments('idBilhete');
+            $table->Integer('bilhete_evento')->unsigned()->nullable();
+            $table->foreign('bilhete_evento')->references('idEvento')->on('evento');
+            $table->String('bilhete_usuario');
+            $table->foreign('bilhete_usuario')->references('cpf')->on('usuario');
+            $table->Integer('bilhete_assento')->unsigned()->nullable();   
+            $table->foreign('bilhete_assento')->references('idAssento')->on('assento');
             $table->timestamps();
-        });
+            
+            
+        });     
+        
     }
 
     /**

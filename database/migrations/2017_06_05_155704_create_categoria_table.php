@@ -13,8 +13,10 @@ class CreateCategoriaTable extends Migration
      */
     public function up()
     {
-        Schema::create('categoria', function (Blueprint $table) {
-            $table->increments('id');
+            Schema::create('categoria', function (Blueprint $table) {
+            $table->engine = 'InnoDB';            
+            $table->increments('idCategoria');
+            $table->string('tipo');
             $table->timestamps();
         });
     }

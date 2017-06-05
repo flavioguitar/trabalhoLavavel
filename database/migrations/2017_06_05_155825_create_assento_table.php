@@ -13,10 +13,15 @@ class CreateAssentoTable extends Migration
      */
     public function up()
     {
-        Schema::create('assento', function (Blueprint $table) {
-            $table->increments('id');
+            Schema::create('assento', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
+            
+            $table->increments('idAssento');
+            $table->Integer('assento_evento')->unsigned();
+            $table->foreign('assento_evento')->references('idEvento')->on('evento');
+            $table->Integer('numero');
             $table->timestamps();
-        });
+        });     
     }
 
     /**

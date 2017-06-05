@@ -13,10 +13,20 @@ class CreateEventoTable extends Migration
      */
     public function up()
     {
-        Schema::create('evento', function (Blueprint $table) {
-            $table->increments('id');
+            Schema::create('evento', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
+            
+            $table->increments('idEvento');
+            $table->Integer('evento_categoria')->unsigned();
+            $table->foreign('evento_categoria')->references('idCategoria')->on('categoria');
+            $table->text('descricao');
+            $table->String('cartaz');
+            $table->date('data');
+            $table->Integer('QtdAssentos');
+            $table->Integer('AssentosDisponiveis');
             $table->timestamps();
         });
+
     }
 
     /**
