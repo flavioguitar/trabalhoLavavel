@@ -14,3 +14,14 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::get('/', 'PagesController@home')->name('home');
+
+Route::resource('categorias', 'categoriaController');
+Route::resource('assentos', 'assentoController');
+Route::resource('eventos', 'eventoController');
+Route::resource('bilhetes', 'bilheteController');
+
+
+Auth::routes();

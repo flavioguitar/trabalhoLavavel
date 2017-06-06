@@ -19,8 +19,8 @@ class CreateBilheteTable extends Migration
             $table->increments('idBilhete');
             $table->Integer('bilhete_evento')->unsigned()->nullable();
             $table->foreign('bilhete_evento')->references('idEvento')->on('evento');
-            $table->String('bilhete_usuario');
-            $table->foreign('bilhete_usuario')->references('cpf')->on('usuario');
+            $table->Integer('bilhete_usuario')->unsigned()->nullable();
+            $table->foreign('bilhete_usuario')->references('id')->on('users');
             $table->Integer('bilhete_assento')->unsigned()->nullable();   
             $table->foreign('bilhete_assento')->references('idAssento')->on('assento');
             $table->timestamps();
