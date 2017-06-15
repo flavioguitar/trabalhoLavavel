@@ -20,10 +20,10 @@ class CreateEventoTable extends Migration
             $table->Integer('evento_categoria')->unsigned();
             $table->foreign('evento_categoria')->references('idCategoria')->on('categoria');
             $table->text('descricao');
-            $table->String('cartaz');
+            $table->text('cartaz')->nullable();
             $table->date('data');
-            $table->Integer('QtdAssentos');
-            $table->Integer('AssentosDisponiveis');
+            $table->Integer('QtdAssentos')->nullable();
+            $table->Integer('AssentosDisponiveis')->nullable();
             $table->timestamps();
         });
 

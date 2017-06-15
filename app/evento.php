@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class evento extends Model
 {
-    protected  $table = 'assento';
+    protected  $table = 'evento';
     protected  $fillable = [
       'evento_categoria',
       'descricao',

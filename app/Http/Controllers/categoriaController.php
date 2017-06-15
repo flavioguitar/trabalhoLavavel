@@ -5,6 +5,8 @@ namespace trabalho\Http\Controllers;
 use trabalho\categoria;
 use Illuminate\Http\Request;
 
+
+
 class categoriaController extends Controller
 {
     /**
@@ -24,7 +26,7 @@ class categoriaController extends Controller
      */
     public function create()
     {
-        //
+        return view('categorias.create');
     }
 
     /**
@@ -35,7 +37,8 @@ class categoriaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        categoria::create($request->all());
+        return redirect()->route('categorias.create');
     }
 
     /**

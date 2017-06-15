@@ -11,15 +11,16 @@
         <nav class="navbar navbar-default">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="{{ route('home') }}">Compras de bilhete</a>
+                    <a class="navbar-brand" href="{{ route('home') }}">Usuário administrador</a>
                 </div>
                 <div class="nav navbar-nav navbar-right">
                     @if (Auth::guest())
                     <li><a href="{{ route('login') }}">Login</a></li>
                     <li><a href="{{ route('register') }}">Registrar</a></li>
                     @else
-                    <li><a href="{{ route('home') }}">Home</a></li>
-                  <!--  <li><a href="{{ route('tasks.index') }}">Tarefas</a></li>-->
+                    <li><a href="{{ route('categorias.create') }}">Cadastro de categoria</a></li>
+                    <li><a href="{{ route('eventos.create') }}">Cadastro de evento</a></li>
+                    <li><a href="{{ route('home') }}">Clientes</a></li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                             {{ Auth::user()->name }} <span class="caret"></span>
