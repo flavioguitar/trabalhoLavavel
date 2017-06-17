@@ -17,7 +17,7 @@
 
 
 @endif
-{!! Form::open(['route' => 'eventos.store']) !!}
+{!! Form::open(['route' => 'eventos.store', 'files'=> true]) !!}
 <div class="form-group">
     {!! Form::label('evento_categoria', 'Categoria', ['class' => 'control-label']) !!}
     {!! Form::select('evento_categoria',$categorias, ['class' => 'form-control']) !!} 
@@ -28,7 +28,7 @@
 </div>
 <div class="form-group">
     {!! Form::label('cartaz', 'Cartaz', ['class' => 'control-label']) !!} 
-    {!! Form::file('image', null, ['class' => 'form-control']) !!}
+    {!! Form::file('cartaz', null, ['class' => 'form-control']) !!}
     <!--http://www.easylaravelbook.com/blog/2015/04/08/processing-file-uploads-with-laravel-5/-->
 </div>
 <div class="form-group">

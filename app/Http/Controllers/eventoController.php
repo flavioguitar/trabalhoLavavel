@@ -5,6 +5,8 @@ namespace trabalho\Http\Controllers;
 use trabalho\evento;
 use Illuminate\Http\Request;
 use trabalho\categoria;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Input;
 
 class eventoController extends Controller
 {
@@ -37,28 +39,20 @@ class eventoController extends Controller
      */
     public function store(Request $request)
     {
-         $evento = new evento(array(
+        $image = $request->file('cartaz');
+        $imageName = time().$image->getClientOriginalName();
+        $image->move(public_path('images'), $imageName);
+        
+        $evento = new evento(array(
         'evento_categoria' => $request->get('evento_categoria'),
         'descricao'  => $request->get('descricao'),
         'descricao'  => $request->get('descricao'),
         'data'  => $request->get('data'),
-        'QtdAssentos'  => $request->get('QtdAssentos')
+        'QtdAssentos'  => $request->get('QtdAssentos'),
+        'cartaz' => $imageName
         ));
-         
-         $evento->save();
-         
-         /*$imageName = $evento->idEvento . '.' . 
-         $request->file('cartaz')->getClientOriginalExtension();
-
-         $request->file('cartaz')->move(
-         base_path() . '/public/images/', $imageName
-    );
-        */
-       // evento::create($request->all());
-        
+        $evento->save();
         return redirect()->route('eventos.create');
-        
-        
     }
 
     /**
