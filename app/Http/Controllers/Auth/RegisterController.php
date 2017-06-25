@@ -3,6 +3,7 @@
 namespace trabalho\Http\Controllers\Auth;
 
 use trabalho\User;
+use trabalho\Role;
 use trabalho\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -67,5 +68,8 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
+        $user->roles()->attach(Role::where('name','publico')->fist());
+        return $user;
     }
+    
 }

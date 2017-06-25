@@ -5,9 +5,10 @@ namespace trabalho\Http\Controllers;
 use trabalho\evento;
 use Illuminate\Http\Request;
 use trabalho\categoria;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\Input;
+//use Illuminate\Support\Facades\Storage;
+//use Illuminate\Support\Facades\Input;
 use trabalho\assento;
+use trabalho\Http\Requests\StoreEventoRequest;
 
 class eventoController extends Controller
 {
@@ -45,7 +46,7 @@ class eventoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreEventoRequest $request)
     {
         $image = $request->file('cartaz');
         $imageName = time().$image->getClientOriginalName();
@@ -87,6 +88,7 @@ class eventoController extends Controller
     public function show(evento $evento)
     {
         dd($evento);
+        
          return view('eventos.show')->withEventos($evento);
     }
 

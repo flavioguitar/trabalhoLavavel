@@ -30,7 +30,6 @@
 <div class="form-group">
     {!! Form::label('cartaz', 'Cartaz', ['class' => 'control-label']) !!} 
     {!! Form::file('cartaz', null, ['class' => 'form-control']) !!}
-    <!--http://www.easylaravelbook.com/blog/2015/04/08/processing-file-uploads-with-laravel-5/-->
 </div>
 <div class="form-group">
     {!! Form::label('data', 'Data', ['class' => 'control-label']) !!} 
