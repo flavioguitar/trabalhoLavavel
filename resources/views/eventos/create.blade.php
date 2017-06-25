@@ -1,5 +1,6 @@
 @extends('layouts.master')
-@section('content');
+@section('content')
+
 <h1>Adicionar</h1>
 <p class='lead'>Insira as informações do evento</p>
 <hr>

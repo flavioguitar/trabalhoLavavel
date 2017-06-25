@@ -7,9 +7,14 @@ use Illuminate\Http\Request;
 use trabalho\categoria;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Input;
+use trabalho\assento;
 
 class eventoController extends Controller
 {
+     function __construct() {
+//    $this->middleware('admin:gerente',['only'=>['create']]);
+//    $this->middleware('admin:supervisor',['only'=>['destroy']]);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -17,7 +22,10 @@ class eventoController extends Controller
      */
     public function index()
     {
-        //
+        
+        $eventos = Evento::all();
+        return view('eventos.index')->withEventos($eventos);
+
     }
 
     /**
@@ -46,13 +54,28 @@ class eventoController extends Controller
         $evento = new evento(array(
         'evento_categoria' => $request->get('evento_categoria'),
         'descricao'  => $request->get('descricao'),
-        'descricao'  => $request->get('descricao'),
         'data'  => $request->get('data'),
         'QtdAssentos'  => $request->get('QtdAssentos'),
         'cartaz' => $imageName
         ));
-        $evento->save();
-        return redirect()->route('eventos.create');
+        $evento->save();       
+        
+        for ($i = 1 ; $i <= $request->get('QtdAssentos'); $i++ ){
+            
+            $assento = new assento();
+            
+            $assento->numero = $i;
+            $assento->assento_evento = $evento->id;
+            $assento->save();
+            
+        }
+        
+        $msg = "evento cadastrado com sucesso";
+        
+        return view('eventos.index')->withMensagem($msg);
+                
+        //return redirect()->route('eventos.create');
+        
     }
 
     /**
@@ -63,7 +86,8 @@ class eventoController extends Controller
      */
     public function show(evento $evento)
     {
-        //
+        dd($evento);
+         return view('eventos.show')->withEventos($evento);
     }
 
     /**
