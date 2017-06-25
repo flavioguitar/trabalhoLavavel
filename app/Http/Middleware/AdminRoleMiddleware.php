@@ -2,6 +2,7 @@
 
 namespace trabalho\Http\Middleware;
 
+use Illuminate\Support\Facades\Auth;
 use Closure;
 
 class AdminRoleMiddleware

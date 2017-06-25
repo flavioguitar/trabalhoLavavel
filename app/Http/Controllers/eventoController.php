@@ -13,8 +13,9 @@ use trabalho\Http\Requests\StoreEventoRequest;
 class eventoController extends Controller
 {
      function __construct() {
-//    $this->middleware('admin:gerente',['only'=>['create']]);
-//    $this->middleware('admin:supervisor',['only'=>['destroy']]);
+    $this->middleware('admin:superAdmin',['only'=>['create']]);
+    $this->middleware('admin:superAdmin',['only'=>['store']]);
+    
     }
     /**
      * Display a listing of the resource.
